@@ -1,0 +1,38 @@
+#!/bin/bash
+
+set -e
+
+GREEN="\e[32m"
+ORANGE="\e[33m"
+NC="\e[0m"
+
+echo ""
+echo "${GREEN}=> Installing required dependencies...${NC}"
+sh ./scripts/install_os_dependencies.sh
+
+echo ""
+echo "${GREEN}=> Installing Oh My Zsh and some plugins...${NC}"
+sh ./scripts/install_oh_my_zsh_and_plugins.sh
+
+echo ""
+echo "${GREEN}=> Installing Neovim (it can take several minutes)...${NC}"
+sh ./scripts/install_neovim.sh
+
+echo ""
+echo "${GREEN}=> Making backup of previous settings...${NC}"
+sh ./scripts/backup_previous_settings.sh
+
+echo ""
+echo "${GREEN}=> Copying new files...${NC}"
+sh ./scripts/copy_new_files.sh
+
+echo ""
+echo "${GREEN}=> Installing Starship theme...${NC}"
+sh ./scripts/install_starship_theme.sh
+
+echo ""
+echo "${GREEN}=> Installation complete!${NC}"
+echo "${ORANGE}   Now add:${NC}"
+echo "${ORANGE}   zsh-autosuggestions${NC}"
+echo "${ORANGE}   zsh-syntax-highlighting:${NC}"
+echo "${ORANGE}   to '~/.zshrc' file and relogin${NC}"
